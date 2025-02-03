@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaRegNewspaper } from "react-icons/fa";
-import { RiRefund2Line } from "react-icons/ri";
-import { PiFlagBannerFill } from "react-icons/pi";
-import { PiHandWithdraw } from "react-icons/pi";
-import { BiMoneyWithdraw } from "react-icons/bi";
-import { BsTicketDetailed } from "react-icons/bs";
-import { VscActivateBreakpoints } from "react-icons/vsc";
-import { RiMoneyDollarBoxLine } from "react-icons/ri";
+import { useDispatch } from 'react-redux';
 import { PiHandDepositBold } from "react-icons/pi";
-import { FaTradeFederation } from "react-icons/fa6";
+import {dashboardbatchs } from '../Redux/action/Dashboardaction'
 import { GrTransaction } from "react-icons/gr";
 import { PiHandWithdrawDuotone } from "react-icons/pi";
 const Sidebar = ({
@@ -22,6 +15,7 @@ const Sidebar = ({
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [openBannerDropdown, setOpenBannerDropdown] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleLogout = () => {
     localStorage.clear('token');
     navigate('/login');
@@ -45,6 +39,14 @@ const Sidebar = ({
       window.removeEventListener("resize", handleResize);
     };
   }, [setSidebarCollapsed]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+//  dispatch(dashboardbatchs());
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   return (
     <>

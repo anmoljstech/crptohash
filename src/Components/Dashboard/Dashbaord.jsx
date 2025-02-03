@@ -11,41 +11,7 @@ const Dashbaord = () => {
   useEffect(() => {
     // dispatch(dashboardbatchs());
   }, []);
-  // const records = () => {
-  //   if (dashbaord  && dashbaord?.length > 0) {
-  //     return dashbaord?.map((row, i) => {
-  //       return (
-  //         <tr className="table-row" key={i}>
-  //           <td className="tabel-text w inter">{i + 1}</td>
-  //           <td className="tabel-text w inter">{row?.symbol}</td>
-  //           <td className="tabel-text w inter">{row?.side}</td>
-  //           <td className="tabel-text w inter">{row?.batchId}</td>
-  //           <td
-  //             className={`tabel-text w inter ${row?.closeStatus === true ? "text-success" : "text-danger"
-  //               }`} >
-  //             {row?.closeStatus ? "true" : "false"} </td>
-  //           <td
-  //             className={`tabel-text w inter ${row?.profitDistributionStatus === true
-  //               ? "text-success"
-  //               : "text-danger"}`}>
-  //             {row?.profitDistributionStatus ? "true" : "false"}
-  //           </td>
-  //           <td className="tabel-text w inter">{row?.leverage}</td>
-  //           <td className="tabel-text w inter">{row?.quantity}</td>
-  //           <td className="tabel-text w inter">
-  //             {dateFormat(row.createdAt, "yyyy-mm-dd, HH:mm:ss")}
-  //           </td>
-  //         </tr>
-  //       );
-  //     });
-  //   } else {
-  //     return (
-  //       <tr>
-  //         <td colSpan="13">Data Not Found</td>
-  //       </tr>
-  //     );
-  //   }
-  // };
+  
   return (
     <>
     <div className="container mt-4">
