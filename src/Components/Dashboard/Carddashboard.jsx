@@ -16,19 +16,24 @@ const Dashboardcards = () => {
     const cardsData = [
         { title: "User", value: dashbaord?.users  },
         { title: "Deposit Transactions", value: dashbaord?.depositTransactions },
-        
+        { title: "Gas Fee Address", value: dashbaord?.gasFeeAddress },
+        { title: "Deposit Address", value: dashbaord?.depostiAddress },
+        { title: "BNB Balance", value: dashbaord?.bnbBalance },
+        { title: "USDT Balance", value: dashbaord?.usdtBalance },
+        { title: "Total Deposited Amount", value: dashbaord?.totalDepositedAmount },
+        { title: "Pending Withdraw Amount", value: dashbaord?.pendingWithdrawAmount },
     ]; 
     return (
         <>
 
             <div className="row">
                 {cardsData.map((card, index) => (
-                    <div className="col-md-4" key={index}>
-                        <div className="card shadow-sm mb-3">
-                            <div className="card-body d-flex align-items-center">
+                    <div className="col-md-4 mb-3" key={index}>
+                        <div className="card shadow-sm mb-3 h-100">
+                            <div className="card-body d-flex align-items-center ">
                                 <div>
-                                    <h5 className="card-title"> {loading ? (<Skeleton width={150} baseColor="#9e9e9e" highlightColor="#000" />) : (card.title)}               </h5>
-                                    <p className="card-text"> {loading ? (<Skeleton width={100} baseColor="#9e9e9e" highlightColor="#000" />) : (card.value)} </p>
+                                    <h5 className="card-title fw-bold"> {loading ? (<Skeleton width={150} baseColor="#9e9e9e" highlightColor="#000" />) : (card.title)}               </h5>
+                                    <p className="card-text" style={{overflow:'hidden',textOverflow:"ellipsis", maxWidth:'120px', whiteSpace:"nowrap"}}> {loading ? (<Skeleton width={100} baseColor="#9e9e9e" highlightColor="#000" />) : (card.value)} </p>
                                 </div>
                             </div>
                         </div>

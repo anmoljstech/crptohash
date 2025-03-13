@@ -1,4 +1,4 @@
-import {dashboarddata, userapi }  from '../../Apiservice/apiservice'
+import {dashboarddata, userapi, userdetailsapi }  from '../../Apiservice/apiservice'
 import * as Type from './Type'
 import { toast } from 'react-toastify' 
 export const dashboardbatchs = () => async (dispatch) => {
@@ -41,6 +41,29 @@ export const userdata = (requestData) => async (dispatch) => {
       }
     } catch (error) {
       dispatch({ type: Type.USER_NEWS_FAILURE });
+      toast.dismiss() 
+      toast.error('WITHDRAW  is  failed. Please try again.');
+    }
+  }
+  export const userdetils = (requestData) => async (dispatch) => {
+    dispatch({ type: Type.USER_DETAILS_REQUEST }); 
+    try {
+      let response = await userdetailsapi(requestData); 
+  
+         
+      if (response.success === true) {
+        dispatch({
+          type: Type.USER_DETAILS_SUCCESS,
+          payload: response,
+        });
+      
+      } else {
+        dispatch({ type: Type.USER_DETAILS_FAILURE }); 
+        toast.dismiss()
+        toast.error(response.message);
+      }
+    } catch (error) {
+      dispatch({ type: Type.USER_DETAILS_FAILURE });
       toast.dismiss() 
       toast.error('WITHDRAW  is  failed. Please try again.');
     }

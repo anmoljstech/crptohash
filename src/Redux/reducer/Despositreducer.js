@@ -3,6 +3,7 @@ const initialState = {
     loading: false,
     despositdata: {},
     margin: {},
+    payout: {},
     error: null,
 };
 const dispositreducers = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const dispositreducers = (state = initialState, action) => {
         case Type.MARGIN_BATCH_SUCCESS:
             return { ...state, loading: false, margin: action.payload, };
         case Type.MARGIN_BATCH_FAILURE:
+            return { ...state, loading: false, error: 'get dashbaord data not found ', };
+        case Type.PAYOUT_BATCH_REQUEST:
+            return { ...state, loading: true, error: null, };
+        case Type.PAYOUT_BATCH_SUCCESS:
+            return { ...state, loading: false, payout: action.payload, };
+        case Type.PAYOUT_BATCH_FAILURE:
             return { ...state, loading: false, error: 'get dashbaord data not found ', };
 
 

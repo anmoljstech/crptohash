@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
 import dateFormat from "dateformat";
 import Skeleton from "react-loading-skeleton";
-import { desposit } from '../../Redux/action/Desposit'
+import { payouttransaction } from '../../Redux/action/Desposit'
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-const Desposittranction = () => {
+const PayoutTransaction = () => {
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
-    const { despositdata, loading } = useSelector(state => state.despositdata);
+    const { payout, loading } = useSelector(state => state.despositdata);
     const pageSize = 10;
     const fetchData = () => {
         const skip = (currentPage - 1) * pageSize;
@@ -20,7 +20,7 @@ const Desposittranction = () => {
             skip: skip,
 
         };
-        dispatch(desposit(requestData));
+        dispatch(payouttransaction(requestData));
     };
     useEffect(() => {
         fetchData();
@@ -28,47 +28,30 @@ const Desposittranction = () => {
     const handlePaginationChange = (page) => {
         setCurrentPage(page);
     };
-    console.log({ despositdata });
+    console.log({ payout });
 
     const records = () => {
-        if (despositdata && despositdata?.transactions && despositdata?.transactions?.length > 0) {
-            return despositdata?.transactions?.map((row, i) => {
+        if (payout && payout?.transactions && payout?.transactions?.length > 0) {
+            return payout?.transactions?.map((row, i) => {
                 return (
                     <tr className="table-row" key={i}>
                         <td scope="row">{(currentPage - 1) * pageSize + i + 1}</td>
-                        {/* <td className="tabel-text w inter">{row?.adminHash?`${row?.adminHash?.slice(0, 10)}...` : ""}</td> */}
+            
                         <td className="tabel-text w inter">{row?.userId?.name}</td>
                         <td className="tabel-text w inter">{row?.userId?.userId}</td>
-
-                        <td>
-                            <a href={`https://bscscan.com/tx/${row.adminHash}`} target="_blank" >
-                                {row.adminHash ? row.adminHash.slice(0, 15) : 'None'}
-                            </a>
-                        </td>
-                        <td className="tabel-text w inter">{row?.amount}</td>
                         <td className="tabel-text w inter">{row?.apiKey}</td>
+                        <td className="tabel-text w inter">{row?.amount}</td>
+                        <td className="tabel-text w inter">{row?.status}</td>
+                        <td className="tabel-text w inter">{row?.walletAddress}</td>
+                      
+                      
+                        <td className="tabel-text w inter">{row?.ipAddress}</td>
+                        <td className="tabel-text w inter">{row?.blockChain}</td>
+                        <td className="tabel-text w inter">{row?.callbackUrl}</td>
+                        <td className="tabel-text w inter">{row?.remarks}</td>
 
                         <td>
-                            <a href={`https://bscscan.com/tx/${row.debitHash}`} target="_blank" >
-                                {row.debitHash ? row.debitHash.slice(0, 15) : 'None'}
-                            </a>
-                        </td>
-                        <td>
-                            <a href={`https://bscscan.com/address/${row.from}`} target="_blank" >
-                                {row.from ? row.from.slice(0, 15) : 'None'}
-                            </a>
-                        </td>
-                        <td>
-                            <a href={`https://bscscan.com/address/${row.to}`} target="_blank" >
-                                {row.to ? row.to.slice(0, 15) : 'None'}
-                            </a>
-                        </td>
-                        <td className="tabel-text w inter">{row?.baseCurrencyDepositStatus ? <FaCheck color="green" /> : <ImCross color="red" />}</td>
-                        <td className="tabel-text w inter">{row?.mainCurrencyDebitStatus ? <FaCheck color="green" /> : <ImCross color="red" />}</td>
-                        <td className="tabel-text w inter">{row?.tokenName}</td>
-
-                        <td>
-                            <a href={`https://bscscan.com/address/${row.transactionHash}`} target="_blank" >
+                            <a href={`https://bscscan.com/tx/${row.transactionHash}`} target="_blank" >
                                 {row.transactionHash ? row.transactionHash.slice(0, 15) : 'None'}
                             </a>
                         </td>
@@ -92,9 +75,9 @@ const Desposittranction = () => {
             <div className="container container-trade p-0">
                 <div className="">
                     <div className="container container-trade2 mt-2 p-1">
-                        <h1 className="text-info text-center"> Deposit Transaction  </h1>
+                        <h1 className="text-info text-center"> Payout Transaction  </h1>
                         <h4 className="text-right1 p-3 text-primary">
-                            Total Deposit Transaction      : {despositdata?.record_count
+                            Total Payout Transaction      : {payout?.record_count
                             }
 
                         </h4>
@@ -107,18 +90,18 @@ const Desposittranction = () => {
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
+                                                <th scope="col">S No.</th>
                                                 <th scope="col"> Name</th>
                                                 <th scope="col"> User Id</th>
-                                                <th scope="col">AdminHash</th>
-                                                <th scope="col">Amount</th>
                                                 <th scope="col">Api Key</th>
-                                                <th scope="col">Debit Hash</th>
-                                                <th scope="col">From</th>
-                                                <th scope="col"> To</th>
-                                                <th scope="col"> Deposit Status</th>
-                                                <th scope="col"> Debit Status</th>
-                                                <th scope="col"> Token Name</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Wallet Address</th>
+                                                <th scope="col">IP Address</th>
+                                                <th scope="col">Blockcain</th>
+                                                <th scope="col">Callback Url</th>
+                                                <th scope="col"> Remarks</th>
+                                               
                                                 <th scope="col"> Transaction Hash</th>
 
 
@@ -136,7 +119,7 @@ const Desposittranction = () => {
                                 style={{ cursor: "pointer" }}
                                 className="mx-auto"
                                 current={currentPage || 1}
-                                total={despositdata?.record_count || 0}
+                                total={payout?.record_count || 0}
                                 pageSize={10}
                                 onChange={handlePaginationChange}
                                 showSizeChanger={false}
@@ -150,4 +133,6 @@ const Desposittranction = () => {
     )
 }
 
-export default Desposittranction
+export default PayoutTransaction;
+
+

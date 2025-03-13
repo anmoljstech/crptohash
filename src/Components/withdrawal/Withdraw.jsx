@@ -46,7 +46,7 @@ const Withdraw = () => {
             .then(() => {
                 setShowModal(false);
                 setRemarks("");
-                fetchData(); // Refresh transaction list after approval/rejection
+                fetchData(); 
             })
             .catch((error) => {
                 console.error("Error updating transaction:", error);
@@ -91,7 +91,9 @@ const Withdraw = () => {
                                     </button>
                                 </>
                             ) : (
-                                <></>
+                                <>
+                                
+                                </>
                             )}
                         </td>
                     </tr>

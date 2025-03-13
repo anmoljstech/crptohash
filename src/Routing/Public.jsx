@@ -17,12 +17,12 @@ const Public = () => {
     // }
     const useAuth = () => {
         const token = localStorage.getItem('token');
-        return token ? true : false;
+        return token ? true : false; 
     }
     let auth = { 'token': useAuth() }
 
     return (
-        auth.token ? <Navigate to='/dashboard' /> : <Outlet />
+        auth.token ? <Navigate to='/' /> : <Outlet />
     )
 }
 

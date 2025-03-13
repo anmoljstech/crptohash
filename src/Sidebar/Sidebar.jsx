@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { PiHandDepositBold } from "react-icons/pi";
-import {dashboardbatchs } from '../Redux/action/Dashboardaction'
+import { dashboardbatchs } from '../Redux/action/Dashboardaction'
 import { GrTransaction } from "react-icons/gr";
+import { BiMoneyWithdraw } from "react-icons/bi";
 import { PiHandWithdrawDuotone } from "react-icons/pi";
 const Sidebar = ({
   isSidebarVisible,
@@ -42,7 +43,7 @@ const Sidebar = ({
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-//  dispatch(dashboardbatchs());
+    //  dispatch(dashboardbatchs());
     if (!token) {
       navigate("/login");
     }
@@ -51,6 +52,7 @@ const Sidebar = ({
   return (
     <>
       <div id="sidebar" className={`sidebar ${isSidebarVisible ? "show" : ""} ${isSidebarCollapsed ? "collapsed" : ""}`} >
+
         <div className="logo">
           <div className="d-flex align-items-center">
             <i className="fa fa-user"></i>
@@ -67,7 +69,7 @@ const Sidebar = ({
             <Link
               onClick={() => setSidebarVisible(false)}
               className="nav-link"
-              to="/dashboard"
+              to="/"
               title={isSidebarCollapsed ? "Dashboard" : ""}
             >
               <span className="icon">
@@ -84,7 +86,7 @@ const Sidebar = ({
               title={isSidebarCollapsed ? "user" : ""}
             >
               <span className="icon">
-              <i className="fas fa-users"></i>
+                <i className="fas fa-users"></i>
               </span>
               <span className="text">User</span>
             </Link>
@@ -97,7 +99,7 @@ const Sidebar = ({
               title={isSidebarCollapsed ? "desposit" : ""}
             >
               <span className="icon">
-              <PiHandDepositBold />
+                <PiHandDepositBold />
               </span>
               <span className="text">Deposit Transaction</span>
             </Link>
@@ -110,9 +112,22 @@ const Sidebar = ({
               title={isSidebarCollapsed ? "desposit" : ""}
             >
               <span className="icon">
-              <GrTransaction />
+                <GrTransaction />
               </span>
               <span className="text">Margin Transaction</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              onClick={() => setSidebarVisible(false)}
+              className="nav-link"
+              to="/desposit/payouttransaction"
+              title={isSidebarCollapsed ? "desposit" : ""}
+            >
+              <span className="icon">
+                <BiMoneyWithdraw />
+              </span>
+              <span className="text">Payout Transaction</span>
             </Link>
           </li>
           <li className="nav-item">
@@ -123,7 +138,7 @@ const Sidebar = ({
               title={isSidebarCollapsed ? "withdraw" : ""}
             >
               <span className="icon">
-              <PiHandWithdrawDuotone />             
+                <PiHandWithdrawDuotone />
               </span>
               <span className="text">Withdraw Histary</span>
             </Link>
@@ -182,6 +197,7 @@ const Sidebar = ({
           </div>
         </div>
       )}
+
     </>
   );
 };

@@ -9,8 +9,11 @@ import Private from './Routing/Private'
 import Margintranction from "./Components/Desposit/Margintranction";
 import Dashbaord from './Components/Dashboard/Dashbaord'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Users from './Components/UserList/Users'
+import Users from './Components/UserList/Users' 
+import Viewdetials from './Components/UserList/Viewdetials'
 import Desposittranction from './Components/Desposit/Desposittranction'
+import Loginotp from './Auth/Login/Loginotp'
+import PayoutTransaction from "./Components/Desposit/Payouttransaction";
 const App = () => {
   return (
     <>
@@ -18,17 +21,21 @@ const App = () => {
         <Routes>
           <Route element={<Public />}>
             <Route path="/login" element={<Login />} />
+            <Route path="/loginotp" element={<Loginotp />} />
            
           </Route>
           <Route element={<Private />}>
             <Route path="" element={<Layout />}>
-            <Route path="/dashboard" element={<Dashbaord />} />
+            <Route path="/" element={<Dashbaord />} />
             <Route path="/users">
             <Route path="list" element={<Users />} />
+            
             </Route>
+            <Route path="update/:id" element={<Viewdetials />} />
             <Route path="/desposit">
             <Route path="desposittranction" element={<Desposittranction />} />
             <Route path="margintranction" element={<Margintranction />} />
+            <Route path="payouttransaction" element={<PayoutTransaction />} />
             </Route>
             <Route path="/withdrawal">
             <Route path="withdraw" element={<Withdraw />} />
