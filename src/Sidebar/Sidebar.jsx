@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+
 import { PiHandDepositBold } from "react-icons/pi";
-import { dashboardbatchs } from '../Redux/action/Dashboardaction'
+// import { dashboardbatchs } from '../Redux/action/Dashboardaction'
 import { GrTransaction } from "react-icons/gr";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { PiHandWithdrawDuotone } from "react-icons/pi";
@@ -16,7 +16,7 @@ const Sidebar = ({
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [openBannerDropdown, setOpenBannerDropdown] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+ 
   const handleLogout = () => {
     localStorage.clear('token');
     navigate('/login');

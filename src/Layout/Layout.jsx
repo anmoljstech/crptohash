@@ -8,10 +8,10 @@ const Layout = () => {
 
   const toggleSidebar = () => {
     if (window.innerWidth <= 768) {
-      // Mobile: Toggle Sidebar visibility
+     
       setSidebarVisible((prev) => !prev);
     } else {
-      // Desktop: Collapse Sidebar
+     
       setSidebarCollapsed((prev) => !prev);
     }
   };

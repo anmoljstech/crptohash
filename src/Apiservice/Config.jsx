@@ -3,4 +3,4 @@
 
 export const base_url = `https://backend.kryptohas.com`; 
 
-// 192.168.1.15
+// 192.168.1.15ac
