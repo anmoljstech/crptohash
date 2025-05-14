@@ -11,6 +11,8 @@ const Dashboardcards = () => {
         dispatch(dashboardbatchs());
 
     }, []);
+
+    
     console.log({dashbaord});``
     
     const cardsData = [
@@ -23,6 +25,9 @@ const Dashboardcards = () => {
         { title: "Total Deposited Amount", value: dashbaord?.totalDepositedAmount },
         { title: "Pending Withdraw Amount", value: dashbaord?.pendingWithdrawAmount },
     ]; 
+
+
+
     return (
         <>
 
