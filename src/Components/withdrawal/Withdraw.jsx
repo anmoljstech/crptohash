@@ -111,8 +111,12 @@ const Withdraw = () => {
         <>
             <div className="container container-trade p-0">
                 <div className="">
+                <div className="bgClr1 rounded-3">
+                        <h1 className="text-center p-3 text-white fw-bold">withdraw Transaction</h1>
+
+                    </div>
                     <div className="container container-trade2 mt-2 p-1">
-                        <h1 className="text-info text-center"> withdraw Transaction  </h1>
+                        {/* <h1 className="text-info text-center"> withdraw Transaction  </h1> */}
                         <h4 className="text-right1 p-3 text-primary">
                             Total withdraw Transaction      : {withdrwal?.record_count
                             }

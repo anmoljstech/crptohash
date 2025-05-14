@@ -37,26 +37,28 @@ const Layout = () => {
   }, []);
 
   return (
-    <div class="d-flex">
-      <Sidebar
-        isSidebarVisible={isSidebarVisible}
-        setSidebarVisible={setSidebarVisible}
-        isSidebarCollapsed={isSidebarCollapsed}
-        setSidebarCollapsed={setSidebarCollapsed}
-      />
-      <div class="content no-margin">
-        <nav class="navbar navbar-expand-lg px-3">
-          <button id="main-toggler" class="toggler" onClick={toggleSidebar}>
-            <i class="fas fa-bars"></i>
-          </button>
-          <span class="ms-3 fw-bold">Admin Dashboard</span>
-        </nav>
+    <div className="d-flex">
+  <Sidebar
+    isSidebarVisible={isSidebarVisible}
+    setSidebarVisible={setSidebarVisible}
+    isSidebarCollapsed={isSidebarCollapsed}
+    setSidebarCollapsed={setSidebarCollapsed}
+  />
+  <div id="content" className={`content no-margin ${isSidebarVisible ? "show" : ""} ${isSidebarCollapsed ? "full" : ""}`} >
+ 
+    <nav className="navbar navbar-expand-lg px-3">
+      <button id="main-toggler" className="toggler" onClick={toggleSidebar}>
+        <i className="fas fa-bars"></i>
+      </button>
+      <span className="ms-3 fw-bold">Admin Dashboard</span>
+    </nav>
 
-        <div class="p-4">
-          <Outlet />
-        </div>
-      </div>
+    <div className="p-4">
+      <Outlet />
     </div>
+  </div>
+</div>
+
   );
 };
 

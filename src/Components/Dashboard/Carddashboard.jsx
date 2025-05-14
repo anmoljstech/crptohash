@@ -11,7 +11,7 @@ const Dashboardcards = () => {
         dispatch(dashboardbatchs());
 
     }, []);
-    console.log({dashbaord});
+    console.log({dashbaord});``
     
     const cardsData = [
         { title: "User", value: dashbaord?.users  },
@@ -28,11 +28,11 @@ const Dashboardcards = () => {
 
             <div className="row">
                 {cardsData.map((card, index) => (
-                    <div className="col-md-4 mb-3" key={index}>
-                        <div className="card shadow-sm mb-3 h-100">
+                    <div className="col-md-4 mb-3 " key={index}>
+                        <div className="card mb-3 h-100 brdr-clr dashboard-card">
                             <div className="card-body d-flex align-items-center ">
                                 <div>
-                                    <h5 className="card-title fw-bold"> {loading ? (<Skeleton width={150} baseColor="#9e9e9e" highlightColor="#000" />) : (card.title)}               </h5>
+                                    <h5 className="card-title fw-bold "> {loading ? (<Skeleton width={150} baseColor="#9e9e9e" highlightColor="#000" />) : (card.title)}               </h5>
                                     <p className="card-text" style={{overflow:'hidden',textOverflow:"ellipsis", maxWidth:'120px', whiteSpace:"nowrap"}}> {loading ? (<Skeleton width={100} baseColor="#9e9e9e" highlightColor="#000" />) : (card.value)} </p>
                                 </div>
                             </div>

@@ -14,36 +14,13 @@ const Dashbaord = () => {
   
   return (
     <>
-    <div className="container mt-4">
-      <h2 className="text-center mb-4">Admin Dashboard</h2>
+    <div className="container ">
+    <div className="bgClr1 rounded-3 mb-4">
+      <h1 className="text-center p-3 text-white fw-bold">Admin Dashboard</h1>
+      </div>
+    
       <Dashboardcards />
-      {/* <div className="mt-4">
-        <h4>Recent Activity</h4>
-        <div className="table-responsive">
-          {/* {loading ? (
-            <Skeleton count={10} height={50} baseColor="#9e9e9e" highlightColor="#000" />
-          ) : 
-            <table className="table table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Symbol</th>
-                  <th scope="col">Side</th>
-                  <th scope="col">Batch Id</th>
-                  <th scope="col">Close Status </th>
-                  <th scope="col">Profit Distribution Status</th>
-                  <th scope="col">Leverage </th>
-                  <th scope="col">Quantity </th>
-                  <th scope="col">Date </th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* {records()} 
-              </tbody>
-            </table>
-          {/* )} 
-        </div>
-      </div> */}
+
     </div>
     </>
   )
