@@ -11,8 +11,7 @@ const Dashboardcards = () => {
         dispatch(dashboardbatchs());
 
     }, []);
-    console.log({dashbaord});
-    
+  
     const cardsData = [
         { title: "User", value: dashbaord?.users  },
         { title: "Deposit Transactions", value: dashbaord?.depositTransactions },
