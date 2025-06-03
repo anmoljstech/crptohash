@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {  NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login } from '../../Redux/action/Authaction'
+import Logo from '../../assets/Images/logoHeader.png';
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,14 +26,21 @@ const Login = () => {
     <div className="login-container">
       <div className="login-picture">
         <img
-          src={LoginImage}
+        src='https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7873.jpg?ga=GA1.1.952322199.1741257962&semt=ais_hybrid&w=740'
+          // src={LoginImage}
           alt="Login Illustration"
         />
       </div>
 
       <div className="login-form-container">
-        <div className="login-form">
-          <h2 className="text-primary">Welcome Back</h2>
+        <div className="login-form ">
+          <div className="logo text-center mb-4">
+         <div className="logo_img w-100 d-flex justify-content-center">
+         <img src={Logo} alt="Logo"  className='w-50 image-fluid'/>
+         </div>
+            
+          </div>
+          <h2 className="text-clr  text-center ">Welcome Back</h2>
           <p className="login-subtitle">Login to your account</p>
 
           <form onSubmit={handleLogin}>
@@ -91,11 +99,11 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <NavLink to="/verficationemail" className="text-primary">
+              <NavLink to="/verficationemail" className="text-primary text-decoration-none">
                 Forgot Password?
               </NavLink>
             </div>
-            <button type="submit" className="btn btn-primary w-100">
+            <button type="submit" className="btn bgClr1 text-white w-100 login-btn">
               Login
             </button>
           </form>

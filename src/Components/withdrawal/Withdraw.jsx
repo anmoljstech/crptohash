@@ -35,18 +35,18 @@ const Withdraw = () => {
 
     const confirmAction = () => {
         if (!selectedTransaction || !selectedStatus) return;
-    
+
         const requestData = {
             transactionId: selectedTransaction._id,
             status: selectedStatus,
             remarks: remarks,
         };
-    
+
         dispatch(withdrawtapprovedaction(requestData))
             .then(() => {
                 setShowModal(false);
                 setRemarks("");
-                fetchData(); 
+                fetchData();
             })
             .catch((error) => {
                 console.error("Error updating transaction:", error);
@@ -69,6 +69,7 @@ const Withdraw = () => {
 
                         <td className="tabel-text w inter">{row?.userId?.name}</td>
                         <td className="tabel-text w inter">{row?.userId?.userId}</td>
+                        <td className="tabel-text w inter">{row?.walletAddress}</td>
                         <td className="tabel-text w inter">{row?.status}</td>
 
 
@@ -92,7 +93,7 @@ const Withdraw = () => {
                                 </>
                             ) : (
                                 <>
-                                
+
                                 </>
                             )}
                         </td>
@@ -111,8 +112,12 @@ const Withdraw = () => {
         <>
             <div className="container container-trade p-0">
                 <div className="">
+                    <div className="bgClr1 rounded-3">
+                        <h1 className="text-center p-3 text-white fw-bold">withdraw Transaction</h1>
+
+                    </div>
                     <div className="container container-trade2 mt-2 p-1">
-                        <h1 className="text-info text-center"> withdraw Transaction  </h1>
+                        {/* <h1 className="text-info text-center"> withdraw Transaction  </h1> */}
                         <h4 className="text-right1 p-3 text-primary">
                             Total withdraw Transaction      : {withdrwal?.record_count
                             }
@@ -130,6 +135,7 @@ const Withdraw = () => {
                                                 <th scope="col">#</th>
                                                 <th scope="col"> Name</th>
                                                 <th scope="col"> User Id</th>
+                                                <th scope="col"> Wallet Address</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Amount</th>
                                                 <th scope="col">Token Name</th>

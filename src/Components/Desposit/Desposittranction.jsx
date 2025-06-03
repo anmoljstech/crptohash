@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
@@ -89,65 +87,72 @@ const Desposittranction = () => {
     };
     return (
         <>
-            <div className="container container-trade p-0">
-                <div className="">
-                    <div className="container container-trade2 mt-2 p-1">
-                        <h1 className="text-info text-center"> Deposit Transaction  </h1>
-                        <h4 className="text-right1 p-3 text-primary">
-                            Total Deposit Transaction      : {despositdata?.record_count
-                            }
+          
+                <div className="container container-trade p-0">
+             <div className="bgClr1 rounded-3">
+                 <h1 className="text-center p-3 text-white fw-bold">Deposit Transaction</h1>
+             </div>
 
-                        </h4>
-                    </div>
-                    <div className="container container-trade2 mt-2 p-1">
-                        <div className="transaction">
-                            <div className="table-responsive transactions">
-                                {loading ? (
-                                    <Skeleton count={10} height={50} baseColor="#9e9e9e" highlightColor="#000" />) : (
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col"> Name</th>
-                                                <th scope="col"> User Id</th>
-                                                <th scope="col">AdminHash</th>
-                                                <th scope="col">Amount</th>
-                                                <th scope="col">Api Key</th>
-                                                <th scope="col">Debit Hash</th>
-                                                <th scope="col">From</th>
-                                                <th scope="col"> To</th>
-                                                <th scope="col"> Deposit Status</th>
-                                                <th scope="col"> Debit Status</th>
-                                                <th scope="col"> Token Name</th>
-                                                <th scope="col"> Transaction Hash</th>
+             <div className="d-flex justify-content-between align-items-center p-3 text-primary">
+                 <h5>
+                     Total Deposit Transaction:{" "}
+                     <span
+                        className="fw-bold"
+                        style={{ color: despositdata?.record_count === 0 ? 'red' : 'green' }}
+                    >
+                        {despositdata?.record_count || 0}
+                    </span>
+                </h5>
+              
+            </div>
+           
 
-
-                                                <th scope="col">Date</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>{records()}</tbody>
-                                    </table>
-                                )}
-                            </div>
-                        </div>
-                        <div className="pagination mt-3">
-                            <Pagination
-                                style={{ cursor: "pointer" }}
-                                className="mx-auto"
-                                current={currentPage || 1}
-                                total={despositdata?.record_count || 0}
-                                pageSize={10}
-                                onChange={handlePaginationChange}
-                                showSizeChanger={false}
-                                showQuickJumper={false}
-                            />
-                        </div>
-                    </div>
+            <div className="transaction">
+                <div className="table-responsive rounded shadow-sm">
+                    {loading ? (
+                        <Skeleton count={10} height={50} baseColor="#9e9e9e" highlightColor="#000" />
+                    ) : (
+                        <table className="table table-striped table-bordered text-center align-middle">
+                            <thead className="table-dark">
+                                <tr>
+                                    <th>S No</th>
+                                    <th>Name</th>
+                                    <th>User Id</th>
+                                    <th>AdminHash</th>
+                                    <th>Amount</th>
+                                    <th>Api Key</th>
+                                    <th>Debit Hash</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Deposit Status</th>
+                                    <th>Debit Status</th>
+                                    <th>Token Name</th>
+                                    <th>Transaction Hash</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>{records()}</tbody>
+                        </table>
+                    )}
                 </div>
             </div>
+
+            <div className="pagination mt-3">
+                <Pagination
+                    style={{ cursor: "pointer" }}
+                    className="mx-auto"
+                    current={currentPage || 1}
+                    total={despositdata?.record_count}
+                    pageSize={pageSize}
+                    onChange={handlePaginationChange}
+                    showSizeChanger={false}
+                    showQuickJumper={false}
+                />
+            </div>
+        </div>
         </>
     )
 }
 
 export default Desposittranction
+

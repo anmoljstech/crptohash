@@ -13,6 +13,7 @@ import Users from './Components/UserList/Users'
 import Viewdetials from './Components/UserList/Viewdetials'
 import Desposittranction from './Components/Desposit/Desposittranction'
 import Loginotp from './Auth/Login/Loginotp'
+import Userbalance from './Components/UserList/Userbalance'
 import PayoutTransaction from "./Components/Desposit/Payouttransaction";
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/" element={<Dashbaord />} />
             <Route path="/users">
             <Route path="list" element={<Users />} />
+             <Route path="userbalance" element={<Userbalance />} />
             
             </Route>
             <Route path="update/:id" element={<Viewdetials />} />

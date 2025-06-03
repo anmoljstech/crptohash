@@ -31,3 +31,6 @@ export const loginApi = (data) => {
   export const withdrawsactionapi = (data) => {
     return _fetch(`${base_url}/admin/update_withdraw_status`, 'POST', data );
   };
+    export const userbalanceapi = (data) => {
+    return _fetch(`${base_url}/admin/user_balances`, 'POST', data );
+  };
