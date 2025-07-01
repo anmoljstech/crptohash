@@ -71,7 +71,10 @@ const Desposittranction = () => {
                             </a>
                         </td>
                         <td className="tabel-text w inter">
-                            {dateFormat(row.createdAt, "yyyy-mm-dd, HH:mm:ss")}
+                          <td className="tabel-text w inter">
+  {dateFormat(new Date(row.createdAt), "yyyy-mm-dd, HH:MM:ss")}
+</td>
+
                         </td>
 
                     </tr>

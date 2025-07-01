@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {  useSelector } from 'react-redux';
 import Skeleton from "react-loading-skeleton";
-import dateFormat from "dateformat"
+
 // import {dashboardbatchs } from '../../Redux/action/Dashboardaction'
 const Cardsdetils = () => {
    

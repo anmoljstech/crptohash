@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Skeleton from "react-loading-skeleton";
-import dateFormat from "dateformat"
+
 import {dashboardbatchs } from '../../Redux/action/Dashboardaction'
 const Dashboardcards = () => {
     const dispatch = useDispatch();

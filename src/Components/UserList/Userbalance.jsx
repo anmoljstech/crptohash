@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
-import dateFormat from "dateformat";
+
 import Skeleton from "react-loading-skeleton";
 import { userbalance, userdata } from '../../Redux/action/Dashboardaction'
 import { FaCheck } from "react-icons/fa";
@@ -29,26 +29,55 @@ const dispatch = useDispatch();
     useEffect(() => {
         fetchData();
     }, []);
-    const handlePaginationChange = (page) => {
-        setCurrentPage(page);
-    };
-    
+    // const handlePaginationChange = (page) => {
+    //     setCurrentPage(page);
+    // };
+    const totalPayableSum = userbalancedata?.wallet_transactions?.reduce(
+  (acc, row) => acc + (parseFloat(row?.totalPayable) || 0),
+  0
+);
+
+const totalCommissionSum = userbalancedata?.wallet_transactions?.reduce(
+  (acc, row) => acc + (parseFloat(row?.totalCommision) || 0),
+  0
+);
+
     const records = () => {
-    if (userbalancedata?.wallet_transactions && userbalancedata?.wallet_transactions && userbalancedata?.wallet_transactions?.length > 0) {
-            return userbalancedata?.wallet_transactions?.map((row, i) => {
-                 return (
-                <tr key={i}>
-                    <td>{(currentPage - 1) * pageSize + i + 1}</td>
-                    <td>{row?.userId}</td>
-                    <td>{row?.name}</td>
-                    <td>{row?.totalPayable}</td>
-                    
-                </tr>
-            )});
-        } else {
-            return <tr><td colSpan="10" className="text-center text-danger">Data Not Found</td></tr>;
-        }
-    };
+  if (
+    userbalancedata?.wallet_transactions &&
+    userbalancedata?.wallet_transactions.length > 0
+  ) {
+    const rows = userbalancedata?.wallet_transactions?.map((row, i) => (
+      <tr key={i}>
+        <td>{(currentPage - 1) * pageSize + i + 1}</td>
+        <td>{row?.userId}</td>
+        <td>{row?.name}</td>
+        <td>{row?.totalPayable?.toFixed(2)}</td>
+        <td>{row?.totalCommision?.toFixed(2)}</td>
+      </tr>
+    ));
+
+  
+    rows.push(
+      <tr key="total" className="table-success fw-bold">
+        <td colSpan={3}>Total</td>
+        <td>${totalPayableSum?.toFixed(2)}</td>
+        <td> ${totalCommissionSum?.toFixed(2)}</td>
+      </tr>
+    );
+
+    return rows;
+  } else {
+    return (
+      <tr>
+        <td colSpan="10" className="text-center text-danger">
+          Data Not Found
+        </td>
+      </tr>
+    );
+  }
+};
+
 
     return (
         <div className="container">
@@ -57,48 +86,10 @@ const dispatch = useDispatch();
             </div>
 
             <div className="d-flex justify-content-between align-items-center p-3 text-primary">
-                {/* <h5>Total User Balance: 
-                    <span className="text-success fw-bold ms-2">{userbalancedata?.count}</span>
-                </h5> */}
-                {/* <button className="filter-btn" onClick={() => setShowFilter(!showFilter)}>
-                    <FaFilter className="me-2" /> {showFilter ? "Hide Filter" : "Filter"}
-                </button> */}
+               
             </div>
 
-            {/* {showFilter && (
-                <form className="d-flex flex-wrap gap-3 mb-4 justify-content-center"
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        applyFilters();
-                    }}
-                >
-                    <input
-                        type="text"
-                        placeholder="Name"
-                        className="input_search"
-                        value={searchTerm.name}
-                        onChange={(e) => setSearchTerm(prev => ({ ...prev, name: e.target.value.toLowerCase() }))}
-                    />
-                    <input
-                        type="text"
-                        placeholder="User ID"
-                        className="input_search"
-                        value={searchTerm.userId}
-                        onChange={(e) => setSearchTerm(prev => ({ ...prev, userId: e.target.value.toLowerCase() }))}
-                    />
-                    
-                    <button type="submit" className="btn btn-apply">Apply</button>
-                    <button type="button" className="btn btn-clear"
-                        onClick={() => {
-                            setSearchTerm({ name: "", userId: "", date: "" });
-                            setFilteredData(userbalancedata?.wallet_transactions || []);
-                            setCurrentPage(1);
-                        }}
-                    >
-                        Clear
-                    </button>
-                </form>
-            )} */}
+        
 
             <div className="table-responsive rounded shadow-sm">
                 {loading ? (
@@ -111,7 +102,7 @@ const dispatch = useDispatch();
                                 <th>UserId</th>
                                 <th>Name</th>
                                 <th>Total Payable</th>
-                                
+                                  <th>Total Commision</th>
                             </tr>
                         </thead>
                         <tbody>{records()}</tbody>
@@ -119,18 +110,7 @@ const dispatch = useDispatch();
                 )}
             </div>
 
-            {/* <div className="d-flex justify-content-center mt-4">
-                <Pagination
-                                    style={{ cursor: "pointer" }}
-                                    className="mx-auto"
-                                    current={currentPage || 1}
-                                    total={userbalancedata?.count}
-                                    pageSize={pageSize}
-                                    onChange={handlePaginationChange}
-                                    showSizeChanger={false}
-                                    showQuickJumper={false}
-                                />
-            </div> */}
+          
         </div>
     );
 };

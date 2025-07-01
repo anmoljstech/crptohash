@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
-
+import { useNavigate } from "react-router-dom"; 
 const Layout = () => {
   const [isSidebarVisible, setSidebarVisible] = useState(false);
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
+const navigate = useNavigate();
 
+  useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        }
+    }, []);
   const toggleSidebar = () => {
     if (window.innerWidth <= 768) {
      

@@ -39,7 +39,10 @@ const Activitys = () => {
                         <td className="tabel-text w inter">{row?.discription}</td>
                         <td className="tabel-text w inter text-danger">{row?.message}</td>
                         <td className="tabel-text w inter">
-                            {dateFormat(row.createdAt, "yyyy-mm-dd, HH:mm:ss")}
+                            <td className="tabel-text w inter">
+  {dateFormat(new Date(row.createdAt), "yyyy-mm-dd, HH:MM:ss")}
+</td>
+
                         </td>
 
                     </tr>

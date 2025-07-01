@@ -53,7 +53,13 @@ const Margintranction = () => {
                              {row.transactionHash ? row.transactionHash.slice(0, 12) + "..." : "None"}
                          </a>
                      </td>
-                     <td>{dateFormat(row.createdAt, "yyyy-mm-dd, HH:MM:ss")}</td>
+                     <td>
+                       <td className="tabel-text w inter">
+  {dateFormat(new Date(row.createdAt), "yyyy-mm-dd, HH:MM:ss")}
+</td>
+
+                        
+                        </td>
                     </tr>
                 );
             });
